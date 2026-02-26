@@ -2,6 +2,8 @@ data/
 embeddings/
 results/
 *.npy
+.vscode/
+.gitignore
 
 
 
