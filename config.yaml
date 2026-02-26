@@ -1,0 +1,5 @@
+rdx_params:
+  gamma: 0.05        # Controls how fast the difference function saturates
+  beta: 5.0          # Controls affinity for clustering
+  n_neighbors: 50    # Number of neighbors for rank normalization
+  n_clusters: 10     # How many "difference concepts" to find
