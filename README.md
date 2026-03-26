@@ -69,9 +69,6 @@ To reproduce key experiments from the RDX paper using MNIST dataset.
 
 ## Conclusion
 RDX effectively highlights how model representations evolve during training and identifies where models differ in understanding data.
-## 🛠 Usage
-*(Placeholder for installation instructions, e.g., `pip install -r requirements.txt` etc)*
-
 ---
 
 ## 📚 References
