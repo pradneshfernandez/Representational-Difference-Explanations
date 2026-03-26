@@ -35,7 +35,40 @@ This project identifies and proposes solutions for several structural limitation
 * **Cross-Modal Capabilities:** Adapting the visual-centric RDX framework to compare Large Language Models (LLMs) via text and multi-modal representations.
 
 ---
+# Representational Difference Explanations (RDX)
 
+## Overview
+This project implements the RDX method to compare representations learned by neural networks.
+
+## Objective
+To reproduce key experiments from the RDX paper using MNIST dataset.
+
+## Method
+- Train a CNN on MNIST digits (3,5,8)
+- Extract embeddings at:
+  - Epoch 1 (early representation)
+  - Epoch 5 (trained representation)
+- Apply RDX to identify representational differences
+
+## Results
+
+### BSR Scores
+- RDX(A, B): 0.88
+- RDX(B, A): 0.80
+
+### Observations
+- Early model groups digits based on rough visual similarity
+- Later model learns more structured and class-specific features
+- RDX successfully identifies ambiguous samples between classes (e.g., 3 vs 5)
+
+## Files
+- `train_mnist_rdx.py` → training and embedding extraction
+- `run_mnist_rdx.py` → RDX analysis
+- `src/` → core RDX implementation
+- `outputs/` → saved explanations and plots
+
+## Conclusion
+RDX effectively highlights how model representations evolve during training and identifies where models differ in understanding data.
 ## 🛠 Usage
 *(Placeholder for installation instructions, e.g., `pip install -r requirements.txt` etc)*
 
