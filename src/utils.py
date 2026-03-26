@@ -1,13 +1,16 @@
-import numpy as np
+import torch
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
 
-def normalize_features(f):
-    return (f - np.mean(f, axis=0)) / (np.std(f, axis=0) + 1e-8)
+def get_data(batch_size=64, flip=False):
+    transform = transforms.Compose([
+        transforms.ToTensor()
+    ])
 
-import matplotlib.pyplot as plt
+    dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transform)
 
-def plot_2d(features, labels=None, title=""):
-    plt.figure()
-    plt.scatter(features[:,0], features[:,1], c=labels)
-    plt.title(title)
-    plt.show()
+    if flip:
+        dataset.data = torch.flip(dataset.data, dims=[2])  # horizontal flip
 
+    loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+    return loader
