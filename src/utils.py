@@ -28,16 +28,12 @@ def pairwise_rank_distances(X: Array, metric: str = "euclidean") -> Array:
     n = X.shape[0]
 
     D = pairwise_distances(X, metric=metric)
-    rank_dist = np.zeros((n, n), dtype=np.float64)
-
-    for i in range(n):
-        order = np.argsort(D[i], kind="stable")
-        rank = 1
-        for j in order:
-            if j == i:
-                continue
-            rank_dist[i, j] = rank
-            rank += 1
+    
+    order = np.argsort(D, axis=1, kind="stable")
+    rank_dist = np.empty_like(order, dtype=np.float64)
+    np.put_along_axis(rank_dist, order, np.arange(n)[None, :], axis=1)
+    
+    np.fill_diagonal(rank_dist, 0.0)
 
     return rank_dist
 

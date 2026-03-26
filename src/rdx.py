@@ -47,12 +47,14 @@ class RDX:
     def __init__(self, config: Optional[RDXConfig] = None):
         self.config = config or RDXConfig()
 
-    def fit_direction(self, A: Array, B: Array) -> RDXResult:
+    def fit_direction(self, A: Array, B: Array, DA_rank: Optional[Array] = None, DB_rank: Optional[Array] = None) -> RDXResult:
         A, B = validate_embeddings(A, B)
         cfg = self.config
 
-        DA_rank = pairwise_rank_distances(A, metric=cfg.metric)
-        DB_rank = pairwise_rank_distances(B, metric=cfg.metric)
+        if DA_rank is None:
+            DA_rank = pairwise_rank_distances(A, metric=cfg.metric)
+        if DB_rank is None:
+            DB_rank = pairwise_rank_distances(B, metric=cfg.metric)
 
         G = locally_biased_difference(DA_rank, DB_rank, gamma=cfg.gamma)
         F = difference_to_affinity(G, beta=cfg.beta, symmetrize=True)
@@ -87,6 +89,12 @@ class RDX:
         )
 
     def fit_both_directions(self, A: Array, B: Array) -> Tuple[RDXResult, RDXResult]:
-        result_ab = self.fit_direction(A, B)
-        result_ba = self.fit_direction(B, A)
+        A, B = validate_embeddings(A, B)
+        cfg = self.config
+        
+        DA_rank = pairwise_rank_distances(A, metric=cfg.metric)
+        DB_rank = pairwise_rank_distances(B, metric=cfg.metric)
+
+        result_ab = self.fit_direction(A, B, DA_rank=DA_rank, DB_rank=DB_rank)
+        result_ba = self.fit_direction(B, A, DA_rank=DB_rank, DB_rank=DA_rank)
         return result_ab, result_ba

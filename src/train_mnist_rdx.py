@@ -25,6 +25,17 @@ def set_seed(seed: int = SEED) -> None:
     torch.cuda.manual_seed_all(seed)
 
 
+def cka_loss(z_a: torch.Tensor, z_b: torch.Tensor) -> torch.Tensor:
+    z_a = z_a - z_a.mean(dim=0)
+    z_b = z_b - z_b.mean(dim=0)
+    cov_a = z_a @ z_a.T
+    cov_b = z_b @ z_b.T
+    
+    align = torch.trace(cov_a @ cov_b)
+    norm = torch.norm(cov_a, p='fro') * torch.norm(cov_b, p='fro')
+    return 1.0 - (align / (norm + 1e-8))
+
+
 class FilteredMNIST(Dataset):
     def __init__(self, base_dataset: Dataset, selected_indices: list[int]):
         self.base_dataset = base_dataset
@@ -137,11 +148,22 @@ def train_models() -> TrainOutputs:
     for epoch in range(1, 6):
         model.train()
         running_loss = 0.0
+        alpha_cka = 0.5
+
         for x, y in train_loader:
             x, y = x.to(DEVICE), y.to(DEVICE)
             optimizer.zero_grad()
             logits = model(x)
             loss = criterion(logits, y)
+
+            if epoch > 1 and epoch_1_model is not None:
+                z_current = model.extract_embeddings(x)
+                with torch.no_grad():
+                    # Align to epoch 1 representations via Centered Kernel Alignment (CKA)
+                    z_anchor = epoch_1_model.to(DEVICE).extract_embeddings(x)
+                
+                loss += alpha_cka * cka_loss(z_current, z_anchor)
+
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
