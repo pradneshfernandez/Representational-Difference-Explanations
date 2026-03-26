@@ -1,5 +1,3 @@
-
-
 from __future__ import annotations
 
 from typing import Dict, List, Tuple
@@ -20,17 +18,6 @@ def spectral_cluster_affinity(
     random_state: int = 0,
     assign_labels: str = "kmeans",
 ) -> Tuple[IndexArray, List[int], Dict[int, float]]:
-    """Perform spectral clustering on affinity matrix.
-
-    Following the paper:
-    - cluster into m + 1 groups
-    - discard the cluster with the lowest mean within-cluster affinity
-
-    Returns:
-        labels: cluster assignment for each sample
-        kept_cluster_ids: cluster ids retained after dropping weakest cluster
-        cluster_means: mean within-cluster affinity for each cluster
-    """
     F = np.asarray(F, dtype=np.float64)
     n = F.shape[0]
 

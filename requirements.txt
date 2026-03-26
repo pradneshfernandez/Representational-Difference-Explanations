@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+torch
+torchvision
+numpy
+matplotlib
+scikit-learn
+pyyaml
+tqdm
+=======
+>>>>>>> 8db0784
 numpy
 scikit-learn
 matplotlib
@@ -5,4 +17,9 @@ pillow
 tqdm
 jupyter
 torch
+<<<<<<< HEAD
 torchvision
+=======
+torchvision
+>>>>>>> ffa5e25 (Implemented RDX on MNIST with explanation outputs and BSR analysis)
+>>>>>>> 8db0784

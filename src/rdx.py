@@ -44,16 +44,10 @@ class RDXResult:
 
 
 class RDX:
-    """Main class for running Representational Difference Explanations."""
-
     def __init__(self, config: Optional[RDXConfig] = None):
         self.config = config or RDXConfig()
 
     def fit_direction(self, A: Array, B: Array) -> RDXResult:
-        """Run directional RDX(A, B).
-
-        Finds groups of samples that are closer in A than in B.
-        """
         A, B = validate_embeddings(A, B)
         cfg = self.config
 
@@ -62,6 +56,7 @@ class RDX:
 
         G = locally_biased_difference(DA_rank, DB_rank, gamma=cfg.gamma)
         F = difference_to_affinity(G, beta=cfg.beta, symmetrize=True)
+
         labels, kept_cluster_ids, _cluster_means = spectral_cluster_affinity(
             F,
             num_explanations=cfg.num_explanations,
@@ -92,7 +87,6 @@ class RDX:
         )
 
     def fit_both_directions(self, A: Array, B: Array) -> Tuple[RDXResult, RDXResult]:
-        """Run both RDX(A, B) and RDX(B, A)."""
         result_ab = self.fit_direction(A, B)
         result_ba = self.fit_direction(B, A)
         return result_ab, result_ba
