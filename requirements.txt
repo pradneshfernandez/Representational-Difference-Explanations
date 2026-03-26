@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 torch
 torchvision
 numpy
@@ -5,3 +6,13 @@ matplotlib
 scikit-learn
 pyyaml
 tqdm
+=======
+numpy
+scikit-learn
+matplotlib
+pillow
+tqdm
+jupyter
+torch
+torchvision
+>>>>>>> ffa5e25 (Implemented RDX on MNIST with explanation outputs and BSR analysis)
