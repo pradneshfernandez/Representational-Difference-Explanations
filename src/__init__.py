@@ -1,5 +1,6 @@
 from .rdx import RDX, RDXConfig, RDXResult, Explanation
 from .explanation_sampling import Explanation, extract_explanations_from_clusters
+from .clip_labeler import label_all_explanations, MNIST_CANDIDATES  
 from .utils import (
     validate_embeddings,
     pairwise_rank_distances,

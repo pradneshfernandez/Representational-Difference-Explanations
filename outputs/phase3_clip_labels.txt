@@ -1,0 +1,15 @@
+RDX(A->B) CLIP Labels
+----------------------------------------
+Explanation 1: digit three (score=0.277)
+Explanation 2: digit three (score=0.289)
+Explanation 3: ambiguous handwritten digit (score=0.261)
+Explanation 4: digit three (score=0.271)
+Explanation 5: digit three (score=0.286)
+
+RDX(B->A) CLIP Labels
+----------------------------------------
+Explanation 1: digit three (score=0.280)
+Explanation 2: digit three (score=0.284)
+Explanation 3: digit three (score=0.285)
+Explanation 4: digit three (score=0.275)
+Explanation 5: ambiguous handwritten digit (score=0.261)
