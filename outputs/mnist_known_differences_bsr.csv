@@ -1,0 +1,6 @@
+experiment,bsr,description
+M_35 vs M_b,0.83,Labels for 5 replaced with 3. Baseline model is well-separated.
+M_49 vs M_b,0.86,Labels for 9 replaced with 4. Baseline model is well-separated.
+M_35 vs M_49,0.87,Mixes 3s and 5s vs mixes 4s and 9s.
+M_hflip_mixed vs M_hflip_sep,0.9,Model that mixes h-flipped and un-flipped vs model that separates them.
+M_vflip_mixed vs M_vflip_sep,0.91,Model that mixes v-flipped and un-flipped vs model that separates them.

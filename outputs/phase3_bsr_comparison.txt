@@ -1,6 +1,6 @@
 Config                          BSR(A->B)  BSR(B->A)
 ------------------------------------------------------
-gamma=0.05 (paper)                  0.867      0.869
-gamma=0.10 (paper)                  0.889      0.883
-gamma=10.0 (original default)       0.931      0.900
-gamma=adaptive (ours)               0.892      0.892
+gamma=0.05 (paper)                  0.872      0.883
+gamma=0.10 (paper)                  0.883      0.878
+gamma=10.0 (original default)       0.925      0.908
+gamma=adaptive (ours)               0.881      0.914

@@ -9,23 +9,29 @@ While comparison is a cornerstone of scientific analysis, existing Dictionary Le
 
 ---
 
-## 🚀 Project Structure
-
-### Phase 1: Core Implementation
-The core algorithm takes an input dataset of $n$ items and extracts "difference explanation" grids through four steps:
-1. **Compute Distances:** Calculate pairwise Euclidean distances for embeddings from Model A and Model B.
-2. **Normalize:** Convert raw distances into scale-invariant nearest-neighbor ranks.
-3. **Difference Matrix:** Compute a locally-biased difference matrix that prioritizes items where at least one model considers the embeddings to be highly similar.
-4. **Spectral Clustering & KNA:** Apply spectral clustering to an affinity matrix, then use the K-neighborhood affinity (KNA) to sample discrete grids of 9-25 images that visualize the conceptual differences.
-*(Note: A Centered Kernel Alignment (CKA) step is also available to structurally align completely unaligned models before computing distances).*
-
-### Phase 2: Demonstration & Case Study
-To demonstrate why RDX is necessary, we use a modified **MNIST-** dataset.
-* We train a 2-layer CNN and save an early "strong" checkpoint (95% accuracy) and a final "expert" checkpoint (98% accuracy).
-* Running baselines like NMF, SAE, and KMeans produces indistinguishable explanations that fail to explain the 3% performance gap. 
-* Running RDX successfully isolates the exact styles of 3s, 5s, and 8s that the weaker model confuses but the expert model effectively separates.
-
 *Further dataset experiments (CUB, iNaturalist, ImageNet) are detailed in the `experiments/` folder.*
+
+---
+
+## 📂 Repository Structure
+
+```text
+.
+├── data/               # Datasets and extracted embeddings
+├── docs/
+│   └── papers/         # Research papers and technical documentation
+├── experiments/
+│   └── mnist/          # MNIST-specific scripts (training, evaluation, demo)
+├── notebooks/          # Interactive Jupyter notebooks for analysis
+├── outputs/            # Generated explanation grids and plots
+├── src/
+│   └── rdx/            # Core RDX package implementation
+│       ├── clustering.py
+│       ├── rdx.py
+│       ├── utils.py
+│       └── clip_labeler.py
+└── README.md
+```
 
 ### Phase 3: Proposed Improvements (Future Work)
 This project identifies and proposes solutions for several structural limitations of the original RDX method:
@@ -62,10 +68,15 @@ To reproduce key experiments from the RDX paper using MNIST dataset.
 - RDX successfully identifies ambiguous samples between classes (e.g., 3 vs 5)
 
 ## Files
-- `train_mnist_rdx.py` → training and embedding extraction
-- `run_mnist_rdx.py` → RDX analysis
-- `src/` → core RDX implementation
-- `outputs/` → saved explanations and plots
+- `experiments/mnist/train_mnist_rdx.py` → training and embedding extraction
+- `experiments/mnist/run_mnist_rdx.py` → RDX analysis
+- `experiments/mnist/main.py` → Phase 3 comparison & auto-labeling
+- `experiments/mnist/run_all_mnist_comparisons.py` → Reproduces all MNIST BSRs from paper
+- `experiments/cub/run_cub_concept_removal.py` → Reproduces CUB PCBM concept ablation BSRs
+- `experiments/knowledge_discovery/run_dino_clip_discovery.py` → Reproduces DINO/CLIP knowledge discovery BSRs
+- `src/rdx/` → core RDX implementation package
+- `outputs/` → saved explanations, plots, and CSV results
+- `docs/papers/` → original research papers
 
 ## Conclusion
 RDX effectively highlights how model representations evolve during training and identifies where models differ in understanding data.

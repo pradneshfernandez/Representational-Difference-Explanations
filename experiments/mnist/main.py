@@ -5,7 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src import (
+from src.rdx import (
     MNIST_CANDIDATES,
     RDX,
     RDXConfig,

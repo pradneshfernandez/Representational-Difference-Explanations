@@ -6,7 +6,7 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src import RDX, RDXConfig
+from src.rdx import RDX, RDXConfig
 
 
 def show_explanation_grid(

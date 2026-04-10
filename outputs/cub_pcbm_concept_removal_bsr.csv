@@ -1,0 +1,6 @@
+comparison,bsr,removed_concept
+C_{A-S} vs C_A,0.71,Spotted Wing
+C_{A-YB} vs C_A,0.66,Yellow Back
+C_{A-YC} vs C_A,0.64,Yellow Crown
+C_{A-E} vs C_A,0.69,Eyebrow on Head
+C_{A-D} vs C_A,0.68,Duck-like Shape

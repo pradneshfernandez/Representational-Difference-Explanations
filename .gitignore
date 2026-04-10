@@ -3,9 +3,9 @@ embeddings/
 results/
 *.npy
 .vscode/
-Representational Difference Explanations (NeurIPS 2025).pdf
-Representational Difference Explanations.pdf
-XAI_Project.pdf
+docs/papers/Representational Difference Explanations (NeurIPS 2025).pdf
+docs/papers/Representational Difference Explanations.pdf
+docs/papers/XAI_Project.pdf
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,jupytertreenotebook
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode,jupytertreenotebook

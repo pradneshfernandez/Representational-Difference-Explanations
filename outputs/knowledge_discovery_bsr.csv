@@ -1,0 +1,8 @@
+comparison,dataset,bsr
+M_D (DINO) vs M_{D2} (DINOv2),Mittens (ImageNet subset),0.92
+M_D (DINO) vs M_{D2} (DINOv2),Buses (ImageNet subset),0.88
+M_D (DINO) vs M_{D2} (DINOv2),Dogs (ImageNet subset),0.93
+M_D (DINO) vs M_{D2} (DINOv2),Primates (ImageNet subset),0.92
+M_C (CLIP) vs M_{CN} (CLIP-iNat),Gators (iNaturalist subset),0.97
+M_C (CLIP) vs M_{CN} (CLIP-iNat),Corvids (iNaturalist subset),0.93
+M_C (CLIP) vs M_{CN} (CLIP-iNat),Maples (iNaturalist subset),0.98
