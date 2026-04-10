@@ -74,6 +74,7 @@ To reproduce key experiments from the RDX paper using MNIST dataset.
 - `experiments/mnist/run_all_mnist_comparisons.py` → Reproduces all MNIST BSRs from paper
 - `experiments/cub/run_cub_concept_removal.py` → Reproduces CUB PCBM concept ablation BSRs
 - `experiments/knowledge_discovery/run_dino_clip_discovery.py` → Reproduces DINO/CLIP knowledge discovery BSRs
+- `experiments/limitations/run_limitation_solutions.py` → Demonstrates solutions to Phase 3 structural limitations
 - `src/rdx/` → core RDX implementation package
 - `outputs/` → saved explanations, plots, and CSV results
 - `docs/papers/` → original research papers

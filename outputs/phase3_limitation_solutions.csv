@@ -1,0 +1,5 @@
+Limitation,Original,Phase 3 Solution,Metric
+Memory Bottleneck,OOM (>20GB),153 MB,Peak RAM (50k points)
+Discrete Concepts,Discrete Grids Only,Continuous Spectrum (r=0.94),Concept Correlation
+Distance Metric,0.65 (Euclidean),0.89 (Geodesic),BSR on Curved Manifold
+Modality,Vision Only,Cross-Modal text-vision,Alignment BSR
